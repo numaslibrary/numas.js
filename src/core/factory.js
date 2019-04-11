@@ -9,7 +9,7 @@ class Factory {
      * @param {Object} numas
      */
     constructor(wasmModule, numas) {
-        let functions = ['ones', 'zeros', 'zeroes', 'fill']
+        let functions = ['ones', 'zeros', 'fill']
     
         /** @private */
         this.numas = numas
@@ -57,7 +57,7 @@ class Factory {
      * @return {NArray}
      */
     zeroes(shape, datatype = 'i32') {
-        return new NArray(this.functions[datatype].zeroes(this.numas.helper.createShape(shape)), datatype)
+        return new NArray(this.functions[datatype].zeros(this.numas.helper.createShape(shape)), datatype)
     }
 
     /**
