@@ -9,7 +9,7 @@ class Factory {
      * @param {Object} numas
      */
     constructor(wasmModule, numas) {
-        let functions = ['ones', 'zeros', 'fill']
+        let functions = ['ones', 'zeros', 'full']
     
         /** @private */
         this.numas = numas
