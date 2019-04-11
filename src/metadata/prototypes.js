@@ -3,7 +3,7 @@ const datatypes = require('./datatypes')
 
 
 const functionList = [
-    'len', 'clone', 'view',
+    'free', 'len', 'clone', 'view',
     'sin', 'cos', 'arcsin', 'arccos', 'arctan', 'degrees', 'radians',
 ]
 functions = {}

@@ -37,6 +37,15 @@ class NArray {
     }
 
     /**
+     * Frees allocated memory for this array
+     * 
+     * @returns {number}
+     */
+    free() {
+        return this.prototype.free(this.pointer)
+    }
+
+    /**
      * Returns length of array
      * 
      * @returns {number}
