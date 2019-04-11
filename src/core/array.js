@@ -15,8 +15,13 @@ class NArray {
             throw 'Invalid datatype provided'
         }
 
+        /** @private */
         this.pointer = pointer
+
+        /** @private */
         this.type = type
+
+        /** @private */
         this.prototype = prototypes.getPrototype(type)
     }
 
