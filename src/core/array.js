@@ -62,6 +62,87 @@ class NArray {
     view() {
         return new NArray(this.prototype.view(this.pointer), this.type)
     }
+
+    /**
+     * Applies sine on elements from given array and creates new array
+     * 
+     * @returns {NArray}
+     */
+    sin() {
+        return new NArray(this.prototype.sin(this.pointer), 'f64')
+    }
+
+    /**
+     * Applies cosine on elements from given array and creates new array
+     * 
+     * @returns {NArray}
+     */
+    cos() {
+        return new NArray(this.prototype.cos(this.pointer), 'f64')
+    }
+
+    /**
+     * Applies inverse sine on elements from given array and creates new array
+     * 
+     * @returns {NArray}
+     */
+    arcsin() {
+        return new NArray(this.prototype.arcsin(this.pointer), 'f64')
+    }
+
+    /**
+     * Applies inverse cosine on elements from given array and creates new array
+     * 
+     * @returns {NArray}
+     */
+    arccos() {
+        return new NArray(this.prototype.arccos(this.pointer), 'f64')
+    }
+
+    /**
+     * Applies inverse tangent on elements from given array and creates new array
+     * 
+     * @returns {NArray}
+     */
+    arctan() {
+        return new NArray(this.prototype.arctan(this.pointer), 'f64')
+    }
+
+    /**
+     * Converts elements from given array to degrees and creates new array
+     * 
+     * @returns {NArray}
+     */
+    degrees() {
+        return new NArray(this.prototype.degrees(this.pointer), 'f64')
+    }
+
+    /**
+     * Converts elements from given array to radians and creates new array
+     * 
+     * @returns {NArray}
+     */
+    radians() {
+        return new NArray(this.prototype.radians(this.pointer), 'f64')
+    }
+
+    /**
+     * Converts elements from given array to degrees and creates new array
+     * 
+     * @returns {NArray}
+     */
+    rad2deg() {
+        return new NArray(this.prototype.degrees(this.pointer), 'f64')
+    }
+
+    /**
+     * Converts elements from given array to radians and creates new array
+     * 
+     * @returns {NArray}
+     */
+    deg2rad() {
+        return new NArray(this.prototype.radians(this.pointer), 'f64')
+    }
 }
 
 module.exports = NArray

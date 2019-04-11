@@ -2,15 +2,18 @@ const builder = require('../builder')
 const datatypes = require('./datatypes')
 
 
-const functionList = ['len', 'clone', 'view']
+const functionList = [
+    'len', 'clone', 'view',
+    'sin', 'cos', 'arcsin', 'arccos', 'arctan', 'degrees', 'radians',
+]
 functions = {}
 
 
 builder.addCallback(mod => {
     functions = mod.functions
     
-    for (fn of functionList) {
-        for (type in datatypes.DATATYPES) {
+    for (type in datatypes.DATATYPES) {
+        for (fn of functionList) {
             prototypes[type][fn] = functions[fn + '_' + type]
         }
     }
