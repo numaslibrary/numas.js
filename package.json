@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/numaslibrary/numas.js#readme",
   "dependencies": {
-    "numas.wasm": "^0.1.1"
+    "numas.wasm": "^0.1.2"
   },
   "devDependencies": {
     "jsdoc": "^3.5.5"
