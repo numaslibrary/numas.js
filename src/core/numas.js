@@ -1,9 +1,9 @@
 const builder = require('./../builder')
-const Helper = require('./helper')
+const helper = require('./helper')
 const Factory = require('./factory')
 const NArray = require('./array')
 
-const numas = {
+let numas = {
     /** @type {Helper} */
     helper: {},
     /** @type {Factory} */
@@ -13,9 +13,9 @@ const numas = {
 }
 
 builder.addCallback((wasmModule) => {
-    numas.Array = NArray
-    numas.helper = new Helper(wasmModule)
+    numas.helper = helper.createHelper(wasmModule)
     numas.factory = new Factory(wasmModule, numas)
+    numas.Array = NArray
 })
 
 module.exports = numas

@@ -1,5 +1,6 @@
 const datatypes = require('../metadata/datatypes').DATATYPES
 const prototypes = require('../metadata/prototypes')
+const helper = require('./helper')
 
 
 class NArray {
@@ -30,10 +31,22 @@ class NArray {
      * 
      * @param {Array} data Data in array
      * @param {Array} shape Shape of array
+     * @param {string} datatype Type of array
+     * @static
      * @returns {NArray}
      */
-    static new(data, shape) {
+    static create(data, shape, datatype) {
+        if (!datatypes.hasOwnProperty(type)) {
+            throw 'Invalid datatype provided'
+        }
+
+        const helperInstance = helper.getHelper()
+
+        const shapePtr = helperInstance.createShape(shape)
+        const dataPtr = helperInstance.createVector(data, datatype)
+        const ptr = prototypes.getPrototype(datatype).new(dataPtr, shapePtr)
         
+        return new NArray(ptr, datatype)
     }
 
     /**
