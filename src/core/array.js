@@ -34,7 +34,7 @@ class NArray {
      * @param {string} datatype Type of array
      * @returns {NArray}
      */
-    static new(data, shape, datatype) {
+    static new(data, shape, datatype = 'i32') {
         if (!datatypes.hasOwnProperty(type)) {
             throw 'Invalid datatype provided'
         }
