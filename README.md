@@ -7,6 +7,8 @@
 ### Initialize numas
 It's important to initialize numas first by calling `init`
 ```js
+const { numas, init } = require('numas')
+
 init(() => {
     // work with numas
 })
