@@ -4,6 +4,8 @@ const datatypes = require('./datatypes')
 let functions = {}
 const functionList = [
     'free', 'len', 'clone', 'view', 'new', 'baseLen',
+    'add', 'addAssign', 'sub', 'subAssign', 'mul', 'mulAssign', 'div', 'divAssign',
+    'eq', 'neq', 'le', 'lt', 'ge', 'gt',
     'sin', 'cos', 'arcsin', 'arccos', 'arctan', 'degrees', 'radians',
 ]
 

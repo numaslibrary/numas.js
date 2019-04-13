@@ -32,10 +32,9 @@ class NArray {
      * @param {Array} data Data in array
      * @param {Array} shape Shape of array
      * @param {string} datatype Type of array
-     * @static
      * @returns {NArray}
      */
-    static create(data, shape, datatype) {
+    static new(data, shape, datatype) {
         if (!datatypes.hasOwnProperty(type)) {
             throw 'Invalid datatype provided'
         }
@@ -59,12 +58,30 @@ class NArray {
     }
 
     /**
+     * Get type of array
+     * 
+     * @returns {string}
+     */
+    type() {
+        return this.type
+    }
+
+    /**
      * Returns length of array
      * 
      * @returns {number}
      */
     len() {
         return this.prototype.len(this.pointer)
+    }
+
+    /**
+     * Returns length of base data
+     * 
+     * @returns {number}
+     */
+    baseLen() {
+        return this.prototype.baseLen(this.pointer)
     }
 
     /**
@@ -83,6 +100,154 @@ class NArray {
      */
     view() {
         return new NArray(this.prototype.view(this.pointer), this.type)
+    }
+
+    /**
+     * Adds array
+     * 
+     * @param {NArray} other Other array
+     * @returns {NArray}
+     */
+    add(other) {
+        return new NArray(this.prototype.add(this.pointer, other.pointer), this.type)
+    }
+
+    /**
+     * Adds array
+     * 
+     * @param {NArray} other Other array
+     * @returns {NArray}
+     */
+    addAssign(other) {
+        this.prototype.addAssign(this.pointer, other.pointer)
+        
+        return this
+    }
+    
+    /**
+     * Subtracts array
+     * 
+     * @param {NArray} other Other array
+     * @returns {NArray}
+     */
+    sub(other) {
+        return new NArray(this.prototype.sub(this.pointer, other.pointer), this.type)
+    }
+
+    /**
+     * Subtracts array
+     * 
+     * @param {NArray} other Other array
+     * @returns {NArray}
+     */
+    subAssign(other) {
+        this.prototype.subAssign(this.pointer, other.pointer)
+        
+        return this
+    }
+
+    /**
+     * Multiplies array
+     * 
+     * @param {NArray} other Other array
+     * @returns {NArray}
+     */
+    mul(other) {
+        return new NArray(this.prototype.mul(this.pointer, other.pointer), this.type)
+    }
+
+    /**
+     * Multiplies array
+     * 
+     * @param {NArray} other Other array
+     * @returns {NArray}
+     */
+    mulAssign(other) {
+        this.prototype.mulAssign(this.pointer, other.pointer)
+        
+        return this
+    }
+
+    /**
+     * Returns array of 1s and 0s representing truth value equality element wise
+     * 
+     * @param {NArray} other Other array
+     * @returns {NArray}
+     */
+    eq(other) {
+        return new NArray(this.prototype.eq(this.pointer, other.pointer), 'u8')
+    }
+
+    /**
+     * Returns array of 1s and 0s representing truth value not equality element wise
+     * 
+     * @param {NArray} other Other array
+     * @returns {NArray}
+     */
+    neq(other) {
+        return new NArray(this.prototype.neq(this.pointer, other.pointer), 'u8')
+    }
+
+    /**
+     * Returns array of 1s and 0s representing truth value of lesser than element wise
+     * 
+     * @param {NArray} other Other array
+     * @returns {NArray}
+     */
+    lt(other) {
+        return new NArray(this.prototype.lt(this.pointer, other.pointer), 'u8')
+    }
+
+    /**
+     * Returns array of 1s and 0s representing truth value of greater than element wise
+     * 
+     * @param {NArray} other Other array
+     * @returns {NArray}
+     */
+    gt(other) {
+        return new NArray(this.prototype.gt(this.pointer, other.pointer), 'u8')
+    }
+
+    /**
+     * Returns array of 1s and 0s representing truth value of lesser or equal element wise
+     * 
+     * @param {NArray} other Other array
+     * @returns {NArray}
+     */
+    le(other) {
+        return new NArray(this.prototype.le(this.pointer, other.pointer), 'u8')
+    }
+
+    /**
+     * Returns array of 1s and 0s representing truth value of greater or equal element wise
+     * 
+     * @param {NArray} other Other array
+     * @returns {NArray}
+     */
+    ge(other) {
+        return new NArray(this.prototype.le(this.pointer, other.pointer), 'u8')
+    }
+
+    /**
+     * Divides array
+     * 
+     * @param {NArray} other Other array
+     * @returns {NArray}
+     */
+    div(other) {
+        return new NArray(this.prototype.div(this.pointer, other.pointer), this.type)
+    }
+
+    /**
+     * Divides array
+     * 
+     * @param {NArray} other Other array
+     * @returns {NArray}
+     */
+    subAssign(other) {
+        this.prototype.divAssign(this.pointer, other.pointer)
+        
+        return this
     }
 
     /**
@@ -165,6 +330,8 @@ class NArray {
     deg2rad() {
         return new NArray(this.prototype.radians(this.pointer), 'f64')
     }
+
+
 }
 
 module.exports = NArray
