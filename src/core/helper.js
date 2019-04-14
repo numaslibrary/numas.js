@@ -31,7 +31,7 @@ class Helper {
      */
     createVector(data, datatype) {
         const len = data.length
-        const ptr = this.wasmModule.functions.instantiate_vector_i32(len)    
+        const ptr = this.wasmModule.functions[`instantiate_vector_${datatype}`](len)    
         let tmp = new Int32Array(this.wasmModule.memory.buffer, ptr, 1)
         tmp = new datatypes[datatype](this.wasmModule.memory.buffer, tmp[0], len)
         tmp.set(data, 0)
