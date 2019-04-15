@@ -7,7 +7,7 @@ const loader = {
      * @param {number} name Name or path to the wasm module
      * @returns {Promise}
      */
-    loadAsync: (name) => () => new Promise((resolve, reject) => {
+    loadAsync: name => () => new Promise((resolve, reject) => {
         fs.readFile(name, (error, data) => error ? reject(error) : resolve(data))
     }),
 
@@ -17,7 +17,7 @@ const loader = {
      * @param {number} name Name or path to the wasm module
      * @returns {Promise}
      */
-    loadSync: (name) => () => new Promise(resolve => {
+    loadSync: name => () => new Promise(resolve => {
         resolve(fs.readFileSync(name))
     })
 }
