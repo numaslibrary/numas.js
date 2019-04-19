@@ -353,6 +353,42 @@ class NDArray {
         return new NDArray(this.prototype.sqrt(this.pointer), 'f64')
     }
 
+    /**
+     * Applies natural logarithm on every element and return new array
+     * 
+     * @returns {NDArray}
+     */
+    loge() {
+        return new NDArray(this.prototype.loge(this.pointer), 'f64')
+    }
+
+    /**
+     * Applies logarithm with base 2 on every element and return new array
+     * 
+     * @returns {NDArray}
+     */
+    log2() {
+        return new NDArray(this.prototype.log2(this.pointer), 'f64')
+    }
+
+    /**
+     * Applies logarithm with base 10 on every element and return new array
+     * 
+     * @returns {NDArray}
+     */
+    log10() {
+        return new NDArray(this.prototype.log10(this.pointer), 'f64')
+    }
+
+    /**
+     * Applies logarithm with given base on every element and return new array
+     *
+     * @param {number} base Base of logartihm 
+     * @returns {NDArray}
+     */
+    log(base) {
+        return new NDArray(this.prototype.log(this.pointer, base), 'f64')
+    }
 }
 
 module.exports = NDArray
