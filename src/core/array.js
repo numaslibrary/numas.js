@@ -62,6 +62,20 @@ class NDArray {
     }
 
     /**
+     * Get new NDArray from slice
+     * 
+     * @returns {NDArray}
+     */
+    get() {
+        const helperInstance = helper.getHelper()
+        const indices = helperInstance.createIndices(arguments)
+
+        const pointer = this.prototype.get(this.pointer, indices) 
+
+        return new NDArray(pointer, this.type)
+    }
+
+    /**
      * Frees allocated memory for this array
      * 
      * @returns {number}
@@ -417,7 +431,6 @@ class NDArray {
     round(base) {
         return new NDArray(this.prototype.round(this.pointer, base), 'f64')
     }
-
 
     /**
      * Applies round floor on elements from given array and creates new array

@@ -35,6 +35,8 @@ class Helper {
         tmp = new datatypes[datatype](this.wasmModule.memory.buffer, tmp[0], len)
 
         const array = tmp.slice()
+        this.wasmModule.functions[`free_vector_${datatype}`](vector)
+
         return array
     }
 
@@ -65,7 +67,7 @@ class Helper {
         let tmp = new Int32Array(this.wasmModule.memory.buffer, ptr, 1)
         tmp = new Int32Array(this.wasmModule.memory.buffer, tmp[0], len)
         tmp.set(buffer, 0)
-
+        
         return ptr
     }
 
