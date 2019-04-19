@@ -1,7 +1,8 @@
 {
   "name": "numas",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "",
+  "keywords": ["numas", "numeric", "algebra", "array", "computing", "numpy"],
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,7 +18,7 @@
   },
   "homepage": "https://github.com/numaslibrary/numas.js#readme",
   "dependencies": {
-    "numas.wasm": "^0.1.4"
+    "numas.wasm": "^0.1.5"
   },
   "devDependencies": {
     "jsdoc": "^3.5.5"
