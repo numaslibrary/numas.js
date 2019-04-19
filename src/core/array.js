@@ -389,6 +389,24 @@ class NDArray {
     log(base) {
         return new NDArray(this.prototype.log(this.pointer, base), 'f64')
     }
+
+    /**
+     * Returns sum of all elements of array
+     * 
+     * @returns {number}
+     */
+    sum() {
+        return this.prototype.sum(this.pointer)
+    }
+
+    /**
+     * Returns product of all elements of array
+     * 
+     * @returns {number}
+     */
+    prod() {
+        return this.prototype.prod(this.pointer)
+    }
 }
 
 module.exports = NDArray

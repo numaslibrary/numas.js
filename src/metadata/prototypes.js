@@ -2,10 +2,11 @@ const builder = require('../builder')
 const datatypes = require('./datatypes')
 
 const functionList = [
-    'get', 'set', 'collect',
     'sqrt',
+    'sum', 'prod',
     'loge', 'log', 'log2', 'log10',
     'round', 'ceil', 'floor', 'trunc',
+    'get', 'set', 'collect',
     'free', 'len', 'clone', 'view', 'new', 'baseLen',
     'add', 'addAssign', 'sub', 'subAssign', 'mul', 'mulAssign', 'div', 'divAssign',
     'eq', 'neq', 'le', 'lt', 'ge', 'gt',
