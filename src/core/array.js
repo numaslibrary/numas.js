@@ -344,6 +344,14 @@ class NDArray {
         return new NDArray(this.prototype.radians(this.pointer), 'f64')
     }
 
+    /**
+     * Applies square root on every element and return new array
+     * 
+     * @returns {NDArray}
+     */
+    sqrt() {
+        return new NDArray(this.prototype.sqrt(this.pointer), 'f64')
+    }
 
 }
 
