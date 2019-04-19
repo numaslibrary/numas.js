@@ -64,15 +64,30 @@ class NDArray {
     /**
      * Get new NDArray from slice
      * 
+     * @param {Array} indices Indices
      * @returns {NDArray}
      */
-    get() {
+    get(indices) {
         const helperInstance = helper.getHelper()
-        const indices = helperInstance.createIndices(arguments)
+        const indicesPtr = helperInstance.createIndices(indices)
 
-        const pointer = this.prototype.get(this.pointer, indices) 
+        const pointer = this.prototype.get(this.pointer, indicesPtr) 
 
         return new NDArray(pointer, this.type)
+    }
+
+    /**
+     * Set values of array on given indices to value
+     * 
+     * @param {Number} value Value
+     * @param {Array} indices Indices
+     * @returns {void}
+     */
+    set(value, indices) {
+        const helperInstance = helper.getHelper()
+        const indicesPtr = helperInstance.createIndices(indices)
+
+        this.prototype.set(this.pointer, indicesPtr, value) 
     }
 
     /**
