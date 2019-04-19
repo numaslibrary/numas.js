@@ -1,6 +1,7 @@
 const datatypes = require('../metadata/datatypes').DATATYPES
 const prototypes = require('../metadata/prototypes')
 const helper = require('./helper')
+const cleaner = require('./cleaner')
 
 
 class NDArray {
@@ -24,6 +25,8 @@ class NDArray {
 
         /** @private */
         this.prototype = prototypes.getPrototype(type)
+
+        cleaner.addArray(this)
     }
 
     /**

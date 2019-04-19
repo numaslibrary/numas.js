@@ -2,6 +2,7 @@ const builder = require('./../builder')
 const helper = require('./helper')
 const Factory = require('./factory')
 const NDArray = require('./array')
+const cleaner = require('./cleaner')
 
 let numas = {
     /** @type {Helper} */
@@ -10,6 +11,8 @@ let numas = {
     factory: {},
     /** @type {NDArray} */
     Array: {},
+    /** @type {Object} */
+    cleaner: cleaner,
 }
 
 builder.addCallback((wasmModule) => {
