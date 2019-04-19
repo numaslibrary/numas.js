@@ -407,6 +407,47 @@ class NDArray {
     prod() {
         return this.prototype.prod(this.pointer)
     }
+
+    /**
+     * Applies rounding on elements from given array and creates new array
+     *
+     * @param {number} base Base of logartihm 
+     * @returns {NDArray}
+     */
+    round(base) {
+        return new NDArray(this.prototype.round(this.pointer, base), 'f64')
+    }
+
+
+    /**
+     * Applies round floor on elements from given array and creates new array
+     *
+     * @param {number} base Base of logartihm 
+     * @returns {NDArray}
+     */
+    floor(base) {
+        return new NDArray(this.prototype.floor(this.pointer, base), 'f64')
+    }
+
+    /**
+     * Applies round ceil on elements from given array and creates new array
+     *
+     * @param {number} base Base of logartihm 
+     * @returns {NDArray}
+     */
+    ceil(base) {
+        return new NDArray(this.prototype.ceil(this.pointer, base), 'f64')
+    }
+
+    /**
+     * Applies truncating on elements from given array and creates new array
+     *
+     * @param {number} base Base of logartihm 
+     * @returns {NDArray}
+     */
+    trunc(base) {
+        return new NDArray(this.prototype.trunc(this.pointer, base), 'f64')
+    }
 }
 
 module.exports = NDArray
