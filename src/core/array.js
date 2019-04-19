@@ -49,6 +49,19 @@ class NDArray {
     }
 
     /**
+     * Collects NDArray into TypedArray
+     * 
+     * @returns {Array}
+     */
+    collect() {
+        const helperInstance = helper.getHelper()
+        const ptr = this.prototype.collect(this.pointer) 
+        const len = this.prototype.len(this.pointer)
+
+        return helperInstance.vectorToArray(ptr, len, this.type)
+    }
+
+    /**
      * Frees allocated memory for this array
      * 
      * @returns {number}
