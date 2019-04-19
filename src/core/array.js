@@ -3,7 +3,7 @@ const prototypes = require('../metadata/prototypes')
 const helper = require('./helper')
 
 
-class NArray {
+class NDArray {
     /**
      * Initialized new numas array
      * 
@@ -32,7 +32,7 @@ class NArray {
      * @param {Array} data Data in array
      * @param {Array} shape Shape of array
      * @param {string} datatype Type of array
-     * @returns {NArray}
+     * @returns {NDArray}
      */
     static new(data, shape, datatype = 'i32') {
         if (!datatypes.hasOwnProperty(type)) {
@@ -45,7 +45,7 @@ class NArray {
         const dataPtr = helperInstance.createVector(data, datatype)
         const ptr = prototypes.getPrototype(datatype).new(dataPtr, shapePtr)
         
-        return new NArray(ptr, datatype)
+        return new NDArray(ptr, datatype)
     }
 
     /**
@@ -87,36 +87,36 @@ class NArray {
     /**
      * Returns cloned array
      * 
-     * @returns {NArray}
+     * @returns {NDArray}
      */
     clone() {
-        return new NArray(this.prototype.clone(this.pointer), this.type)
+        return new NDArray(this.prototype.clone(this.pointer), this.type)
     }
     
     /**
      * Returns view into array
      * 
-     * @returns {NArray}
+     * @returns {NDArray}
      */
     view() {
-        return new NArray(this.prototype.view(this.pointer), this.type)
+        return new NDArray(this.prototype.view(this.pointer), this.type)
     }
 
     /**
      * Adds array
      * 
-     * @param {NArray} other Other array
-     * @returns {NArray}
+     * @param {NDArray} other Other array
+     * @returns {NDArray}
      */
     add(other) {
-        return new NArray(this.prototype.add(this.pointer, other.pointer), this.type)
+        return new NDArray(this.prototype.add(this.pointer, other.pointer), this.type)
     }
 
     /**
      * Adds array
      * 
-     * @param {NArray} other Other array
-     * @returns {NArray}
+     * @param {NDArray} other Other array
+     * @returns {NDArray}
      */
     addAssign(other) {
         this.prototype.addAssign(this.pointer, other.pointer)
@@ -127,18 +127,18 @@ class NArray {
     /**
      * Subtracts array
      * 
-     * @param {NArray} other Other array
-     * @returns {NArray}
+     * @param {NDArray} other Other array
+     * @returns {NDArray}
      */
     sub(other) {
-        return new NArray(this.prototype.sub(this.pointer, other.pointer), this.type)
+        return new NDArray(this.prototype.sub(this.pointer, other.pointer), this.type)
     }
 
     /**
      * Subtracts array
      * 
-     * @param {NArray} other Other array
-     * @returns {NArray}
+     * @param {NDArray} other Other array
+     * @returns {NDArray}
      */
     subAssign(other) {
         this.prototype.subAssign(this.pointer, other.pointer)
@@ -149,18 +149,18 @@ class NArray {
     /**
      * Multiplies array
      * 
-     * @param {NArray} other Other array
-     * @returns {NArray}
+     * @param {NDArray} other Other array
+     * @returns {NDArray}
      */
     mul(other) {
-        return new NArray(this.prototype.mul(this.pointer, other.pointer), this.type)
+        return new NDArray(this.prototype.mul(this.pointer, other.pointer), this.type)
     }
 
     /**
      * Multiplies array
      * 
-     * @param {NArray} other Other array
-     * @returns {NArray}
+     * @param {NDArray} other Other array
+     * @returns {NDArray}
      */
     mulAssign(other) {
         this.prototype.mulAssign(this.pointer, other.pointer)
@@ -171,78 +171,78 @@ class NArray {
     /**
      * Returns array of 1s and 0s representing truth value equality element wise
      * 
-     * @param {NArray} other Other array
-     * @returns {NArray}
+     * @param {NDArray} other Other array
+     * @returns {NDArray}
      */
     eq(other) {
-        return new NArray(this.prototype.eq(this.pointer, other.pointer), 'u8')
+        return new NDArray(this.prototype.eq(this.pointer, other.pointer), 'u8')
     }
 
     /**
      * Returns array of 1s and 0s representing truth value not equality element wise
      * 
-     * @param {NArray} other Other array
-     * @returns {NArray}
+     * @param {NDArray} other Other array
+     * @returns {NDArray}
      */
     neq(other) {
-        return new NArray(this.prototype.neq(this.pointer, other.pointer), 'u8')
+        return new NDArray(this.prototype.neq(this.pointer, other.pointer), 'u8')
     }
 
     /**
      * Returns array of 1s and 0s representing truth value of lesser than element wise
      * 
-     * @param {NArray} other Other array
-     * @returns {NArray}
+     * @param {NDArray} other Other array
+     * @returns {NDArray}
      */
     lt(other) {
-        return new NArray(this.prototype.lt(this.pointer, other.pointer), 'u8')
+        return new NDArray(this.prototype.lt(this.pointer, other.pointer), 'u8')
     }
 
     /**
      * Returns array of 1s and 0s representing truth value of greater than element wise
      * 
-     * @param {NArray} other Other array
-     * @returns {NArray}
+     * @param {NDArray} other Other array
+     * @returns {NDArray}
      */
     gt(other) {
-        return new NArray(this.prototype.gt(this.pointer, other.pointer), 'u8')
+        return new NDArray(this.prototype.gt(this.pointer, other.pointer), 'u8')
     }
 
     /**
      * Returns array of 1s and 0s representing truth value of lesser or equal element wise
      * 
-     * @param {NArray} other Other array
-     * @returns {NArray}
+     * @param {NDArray} other Other array
+     * @returns {NDArray}
      */
     le(other) {
-        return new NArray(this.prototype.le(this.pointer, other.pointer), 'u8')
+        return new NDArray(this.prototype.le(this.pointer, other.pointer), 'u8')
     }
 
     /**
      * Returns array of 1s and 0s representing truth value of greater or equal element wise
      * 
-     * @param {NArray} other Other array
-     * @returns {NArray}
+     * @param {NDArray} other Other array
+     * @returns {NDArray}
      */
     ge(other) {
-        return new NArray(this.prototype.le(this.pointer, other.pointer), 'u8')
+        return new NDArray(this.prototype.le(this.pointer, other.pointer), 'u8')
     }
 
     /**
      * Divides array
      * 
-     * @param {NArray} other Other array
-     * @returns {NArray}
+     * @param {NDArray} other Other array
+     * @returns {NDArray}
      */
     div(other) {
-        return new NArray(this.prototype.div(this.pointer, other.pointer), this.type)
+        return new NDArray(this.prototype.div(this.pointer, other.pointer), this.type)
     }
 
     /**
      * Divides array
      * 
-     * @param {NArray} other Other array
-     * @returns {NArray}
+     * @param {NDArray} other Other array
+     * @returns {NDArray}
      */
     subAssign(other) {
         this.prototype.divAssign(this.pointer, other.pointer)
@@ -253,85 +253,85 @@ class NArray {
     /**
      * Applies sine on elements from given array and creates new array
      * 
-     * @returns {NArray}
+     * @returns {NDArray}
      */
     sin() {
-        return new NArray(this.prototype.sin(this.pointer), 'f64')
+        return new NDArray(this.prototype.sin(this.pointer), 'f64')
     }
 
     /**
      * Applies cosine on elements from given array and creates new array
      * 
-     * @returns {NArray}
+     * @returns {NDArray}
      */
     cos() {
-        return new NArray(this.prototype.cos(this.pointer), 'f64')
+        return new NDArray(this.prototype.cos(this.pointer), 'f64')
     }
 
     /**
      * Applies inverse sine on elements from given array and creates new array
      * 
-     * @returns {NArray}
+     * @returns {NDArray}
      */
     arcsin() {
-        return new NArray(this.prototype.arcsin(this.pointer), 'f64')
+        return new NDArray(this.prototype.arcsin(this.pointer), 'f64')
     }
 
     /**
      * Applies inverse cosine on elements from given array and creates new array
      * 
-     * @returns {NArray}
+     * @returns {NDArray}
      */
     arccos() {
-        return new NArray(this.prototype.arccos(this.pointer), 'f64')
+        return new NDArray(this.prototype.arccos(this.pointer), 'f64')
     }
 
     /**
      * Applies inverse tangent on elements from given array and creates new array
      * 
-     * @returns {NArray}
+     * @returns {NDArray}
      */
     arctan() {
-        return new NArray(this.prototype.arctan(this.pointer), 'f64')
+        return new NDArray(this.prototype.arctan(this.pointer), 'f64')
     }
 
     /**
      * Converts elements from given array to degrees and creates new array
      * 
-     * @returns {NArray}
+     * @returns {NDArray}
      */
     degrees() {
-        return new NArray(this.prototype.degrees(this.pointer), 'f64')
+        return new NDArray(this.prototype.degrees(this.pointer), 'f64')
     }
 
     /**
      * Converts elements from given array to radians and creates new array
      * 
-     * @returns {NArray}
+     * @returns {NDArray}
      */
     radians() {
-        return new NArray(this.prototype.radians(this.pointer), 'f64')
+        return new NDArray(this.prototype.radians(this.pointer), 'f64')
     }
 
     /**
      * Converts elements from given array to degrees and creates new array
      * 
-     * @returns {NArray}
+     * @returns {NDArray}
      */
     rad2deg() {
-        return new NArray(this.prototype.degrees(this.pointer), 'f64')
+        return new NDArray(this.prototype.degrees(this.pointer), 'f64')
     }
 
     /**
      * Converts elements from given array to radians and creates new array
      * 
-     * @returns {NArray}
+     * @returns {NDArray}
      */
     deg2rad() {
-        return new NArray(this.prototype.radians(this.pointer), 'f64')
+        return new NDArray(this.prototype.radians(this.pointer), 'f64')
     }
 
 
 }
 
-module.exports = NArray
+module.exports = NDArray

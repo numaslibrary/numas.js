@@ -1,5 +1,5 @@
 const datatypes = require('../metadata/datatypes')
-const NArray = require('./array')
+const NDArray = require('./array')
 
 class Factory {
     /**
@@ -33,10 +33,10 @@ class Factory {
      * 
      * @param {Array} shape Shape of array
      * @param {string} datatype Datatype
-     * @return {NArray}
+     * @return {NDArray}
      */
     ones(shape, datatype = 'i32') {
-        return new NArray(this.functions[datatype].ones(this.numas.helper.createShape(shape)), datatype)
+        return new NDArray(this.functions[datatype].ones(this.numas.helper.createShape(shape)), datatype)
     }
 
     /**
@@ -46,7 +46,7 @@ class Factory {
      * @param {string} datatype Datatype
      */
     zeros(shape, datatype = 'i32') {
-        return new NArray(this.functions[datatype].zeros(this.numas.helper.createShape(shape)), datatype)
+        return new NDArray(this.functions[datatype].zeros(this.numas.helper.createShape(shape)), datatype)
     }
 
     /**
@@ -54,10 +54,10 @@ class Factory {
      * 
      * @param {Array} shape Shape of array
      * @param {string} datatype Datatype
-     * @return {NArray}
+     * @return {NDArray}
      */
     zeroes(shape, datatype = 'i32') {
-        return new NArray(this.functions[datatype].zeros(this.numas.helper.createShape(shape)), datatype)
+        return new NDArray(this.functions[datatype].zeros(this.numas.helper.createShape(shape)), datatype)
     }
 
     /**
@@ -65,10 +65,10 @@ class Factory {
      * 
      * @param {Array} shape Shape of array
      * @param {string} datatype Datatype
-     * @return {NArray}
+     * @return {NDArray}
      */
     full(value, shape, datatype = 'i32') {
-        return new NArray(this.functions[datatype].full(value, this.numas.helper.createShape(shape)), datatype)
+        return new NDArray(this.functions[datatype].full(value, this.numas.helper.createShape(shape)), datatype)
     }
 }
 
