@@ -5,7 +5,7 @@ const loader = {
      * @param {number} name Name or path to the wasm module
      * @returns {Promise}
      */
-    loadAsync: name => () => fetch(name)
+    loadAsync: name => () => new Promise(resolve => fetch(name).then(data => resolve(data.arrayBuffer())))
 }
 
 module.exports = loader
