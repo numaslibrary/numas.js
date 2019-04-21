@@ -290,7 +290,7 @@ class NDArray {
      * @param {NDArray} other Other array
      * @returns {NDArray}
      */
-    subAssign(other) {
+    divAssign(other) {
         this.prototype.divAssign(this.pointer, other.pointer)
         
         return this
