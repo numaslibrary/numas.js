@@ -10,7 +10,7 @@ let numas = {
     /** @type {Factory} */
     factory: {},
     /** @type {NDArray} */
-    Array: {},
+    NDArray: {},
     /** @type {Object} */
     cleaner: cleaner,
 }
@@ -18,7 +18,7 @@ let numas = {
 builder.addCallback((wasmModule) => {
     numas.helper = helper.createHelper(wasmModule)
     numas.factory = new Factory(wasmModule, numas)
-    numas.Array = NDArray
+    numas.NDArray = NDArray
 })
 
 module.exports = numas
