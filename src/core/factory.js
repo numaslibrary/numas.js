@@ -26,6 +26,8 @@ class Factory {
                 this.functions[type][func] = wasmModule.functions[func + '_' + type] 
             }
         }
+
+        this.wasmModule = wasmModule.functions
     }
 
     /**
@@ -37,6 +39,43 @@ class Factory {
      */
     ones(shape, datatype = 'i32') {
         return new NDArray(this.functions[datatype].ones(this.numas.helper.createShape(shape)), datatype)
+    }
+
+    /**
+     * Returns evenly spaced elements on log space from given interval
+     * 
+     * @param {number} start Start of interval
+     * @param {number} stop End of interval
+     * @param {number} base Base of log
+     * @param {number} num Number of elements
+     * @return {NDArray}
+     */
+    logspace(start, stop, base, num) {
+        return new NDArray(this.wasmModule.logpsace(start, stop, base, num), 'f64')
+    }
+
+    /**
+     * Returns evenly spaced elements from given interval
+     * 
+     * @param {number} start Start of interval
+     * @param {number} stop End of interval
+     * @param {number} num Base of log
+     * @return {NDArray}
+     */
+    linspace(start, stop, num) {
+        return new NDArray(this.wasmModule.linspace(start, stop, num), 'f64')
+    }
+
+    /**
+     * Returns evenly spaced interval within a given interval
+     * 
+     * @param {number} start Start of interval
+     * @param {number} stop End of interval
+     * @param {number} step Base of log
+     * @return {NDArray}
+     */
+    arange(start, stop, step) {
+        return new NDArray(this.wasmModule.arange(start, stop, step), 'f64')
     }
 
     /**
