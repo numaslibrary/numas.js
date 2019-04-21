@@ -1,11 +1,11 @@
-const nodeLoader = require('./src/loaders/nodeLoader')
-const classicInstancer = require('./src/instancers/classic')
+const loaders = require('./src/loaders')
+const instancers = require('./src/instancers')
 const builder = require('./src/builder')
 const numas = require('./src/core/numas')
 
 const defaultNode = {
-    instancer: classicInstancer,
-    loader: nodeLoader.loadAsync,
+    instancer: instancers.classicInstancer,
+    loader: loaders.nodeLoader.loadAsync,
     path: './node_modules/numas.wasm/numas.wasm'
 }
 
@@ -22,4 +22,6 @@ module.exports = {
     config: {
         defaultNode,
     },
+    loaders,
+    instancers,
 }
