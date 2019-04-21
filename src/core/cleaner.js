@@ -55,12 +55,27 @@ const endCheckpoint = (free = true) => {
 }
 
 /**
+ * Remove NDArray
+ * s
+ * @param {NDArray} array 
+ */
+const removeArray = array => {
+    for (let checkpoint in checkpoints) {
+        for (let index in checkpoints[checkpoint]) {
+            if (checkpoints[checkpoint][index] === array) {
+                checkpoints[checkpoint].slice(index, 1)
+                return
+            } 
+        }
+    }
+}
+
+/**
  * Add NDArray into checkpoint
  * 
  * @param {NDArray} array 
  */
 const addArray = array => checkpoints[currentCheckpoint].push(array)
-
 
 module.exports = {
     startCheckpoint,
@@ -69,4 +84,5 @@ module.exports = {
     freeCheckpoint,
     freeCurrentCheckpoint,
     addArray,
+    removeArray,
 }

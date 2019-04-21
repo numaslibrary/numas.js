@@ -99,6 +99,7 @@ class NDArray {
      * @returns {number}
      */
     free() {
+        cleaner.removeArray(this)
         return this.prototype.free(this.pointer)
     }
 
