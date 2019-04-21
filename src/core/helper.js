@@ -9,7 +9,7 @@ class Helper {
     /**
      * Initialize new shape vector in WebAssembly memory and return its pointer
      * 
-     * @param {Object} shape Shape
+     * @param {Array} shape Shape
      * @return {number}
      */
     createShape(shape) {
