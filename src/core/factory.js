@@ -51,7 +51,7 @@ class Factory {
      * @return {NDArray}
      */
     logspace(start, stop, base, num) {
-        return new NDArray(this.wasmModule.logpsace(start, stop, base, num), 'f64')
+        return new NDArray(this.wasmModule.logspace(start, stop, base, num), 'f64')
     }
 
     /**

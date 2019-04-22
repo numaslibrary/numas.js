@@ -215,6 +215,28 @@ class NDArray {
     }
 
     /**
+     * Divides array
+     * 
+     * @param {NDArray} other Other array
+     * @returns {NDArray}
+     */
+    div(other) {
+        return new NDArray(this.prototype.div(this.pointer, other.pointer), this.type)
+    }
+
+    /**
+     * Divides array
+     * 
+     * @param {NDArray} other Other array
+     * @returns {NDArray}
+     */
+    divAssign(other) {
+        this.prototype.divAssign(this.pointer, other.pointer)
+        
+        return this
+    }
+
+    /**
      * Returns array of 1s and 0s representing truth value equality element wise
      * 
      * @param {NDArray} other Other array
@@ -275,28 +297,6 @@ class NDArray {
     }
 
     /**
-     * Divides array
-     * 
-     * @param {NDArray} other Other array
-     * @returns {NDArray}
-     */
-    div(other) {
-        return new NDArray(this.prototype.div(this.pointer, other.pointer), this.type)
-    }
-
-    /**
-     * Divides array
-     * 
-     * @param {NDArray} other Other array
-     * @returns {NDArray}
-     */
-    divAssign(other) {
-        this.prototype.divAssign(this.pointer, other.pointer)
-        
-        return this
-    }
-
-    /**
      * Applies sine on elements from given array and creates new array
      * 
      * @returns {NDArray}
@@ -312,6 +312,15 @@ class NDArray {
      */
     cos() {
         return new NDArray(this.prototype.cos(this.pointer), 'f64')
+    }
+
+    /**
+     * Applies tangent on elements from given array and creates new array
+     * 
+     * @returns {NDArray}
+     */
+    tan() {
+        return new NDArray(this.prototype.tan(this.pointer), 'f64')
     }
 
     /**
@@ -479,6 +488,60 @@ class NDArray {
      */
     trunc(base) {
         return new NDArray(this.prototype.trunc(this.pointer, base), 'f64')
+    }
+
+    /**
+     * Applies hyperbolic sine on elements from given array and creates new array
+     * 
+     * @returns {NDArray}
+     */
+    sinh() {
+        return new NDArray(this.prototype.sinh(this.pointer), 'f64')
+    }
+
+    /**
+     * Applies hyperbolic cosine on elements from given array and creates new array
+     * 
+     * @returns {NDArray}
+     */
+    cosh() {
+        return new NDArray(this.prototype.cosh(this.pointer), 'f64')
+    }
+
+    /**
+     * Applies hyperbolic tangent on elements from given array and creates new array
+     * 
+     * @returns {NDArray}
+     */
+    tanh() {
+        return new NDArray(this.prototype.tanh(this.pointer), 'f64')
+    }
+
+    /**
+     * Applies inverse hyperbolic sine on elements from given array and creates new array
+     * 
+     * @returns {NDArray}
+     */
+    arcsinh() {
+        return new NDArray(this.prototype.arcsinh(this.pointer), 'f64')
+    }
+
+    /**
+     * Applies inverse hyperbolic cosine on elements from given array and creates new array
+     * 
+     * @returns {NDArray}
+     */
+    arccosh() {
+        return new NDArray(this.prototype.arccosh(this.pointer), 'f64')
+    }
+
+    /**
+     * Applies inverse hyperbolic tangent on elements from given array and creates new array
+     * 
+     * @returns {NDArray}
+     */
+    arctanh() {
+        return new NDArray(this.prototype.arctanh(this.pointer), 'f64')
     }
 }
 
