@@ -31,13 +31,24 @@ class Helper {
      * @return {Array}
      */
     vectorToArray(vector, len, datatype = 'i32') {
-        let tmp = new Int32Array(this.wasmModule.memory.buffer, vector, 1)
+        let tmp = new Int32Array(this.wasmModule.memory.buffer, vector, 3)
         tmp = new datatypes[datatype](this.wasmModule.memory.buffer, tmp[0], len)
 
         const array = tmp.slice()
         this.wasmModule.functions[`free_vector_${datatype}`](vector)
 
         return array
+    }
+
+    /**
+     * Returns vector length
+     * 
+     * @param {number} vector Pointer to vector
+     * @return {number}
+     */
+    getVectorLength(vector) {
+        let tmp = new Int32Array(this.wasmModule.memory.buffer, vector, 3)
+        return tmp[2]
     }
 
     /**

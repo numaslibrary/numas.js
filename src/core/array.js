@@ -52,6 +52,34 @@ class NDArray {
     }
 
     /**
+     * Changes shape of the array
+     * 
+     * @param {Array} shape New shape
+     * @returns {NDArray}
+     */
+    reshape(shape) {
+        const helperInstance = helper.getHelper()
+        const shapePtr = helperInstance.createShape(shape)
+        
+        this.prototype.reshape(this.pointer, shapePtr)
+
+        return this
+    }
+
+    /**
+     * Returns shape of the array
+     * 
+     * @returns {Array}
+     */
+    shape() {
+        const helperInstance = helper.getHelper()
+        const shapePtr = this.prototype.shape(this.pointer)
+        const length = helperInstance.getVectorLength(shapePtr)
+
+        return helperInstance.vectorToArray(shapePtr, length, 'i32')
+    }
+
+    /**
      * Collects NDArray into TypedArray
      * 
      * @returns {Array}
