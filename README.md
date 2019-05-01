@@ -4,6 +4,8 @@
 
 ## Usage
 
+Install all dependecies via `npm i`
+
 ### Initialize numas
 It's important to initialize numas first by calling `init`
 ```js
@@ -22,7 +24,7 @@ It's possible to set configuration for initialization, by default it is set to `
 Example of initializing array
 ```js
 // creates two dimensional array of 6 elements of type i32
-let array = numas.NDArray([1, 2, 3, 4, 5, 6], [2, 3], 'i32')
+let array = numas.NDArray.new([1, 2, 3, 4, 5, 6], [2, 3], 'i32')
 
 // creates two dimensional array of 9 elements filled with value 5
 let filled = numas.factory.full(5, [3, 3])
@@ -36,8 +38,8 @@ let ones = numas.factory.ones([2, 2, 2], 'f64')
 Array can be also initialized by performing some operations like add, mul, sub, div, eq, neq, le, ge, etc.
 ```js
 
-let first = numas.NDArray([1, 2], [2])
-let second = numas.NDArray([1, 2], [2])
+let first = numas.NDArray.new([1, 2], [2])
+let second = numas.NDArray.new([1, 2], [2])
 
 // performs addition of two arrays resulting in new array with elements [2, 4]
 let third = first.add(second)
@@ -46,7 +48,7 @@ let third = first.add(second)
 ### Collecting array
 To get values from array you need to perform collecting
 ```js
-let array = numas.NDArray([1,2,3,4,5,6,7,8,9], [3, 3])
+let array = numas.NDArray.new([1,2,3,4,5,6,7,8,9], [3, 3])
 // ... some operations
 let jsArray = array.get([1, [0,2]]) // Returns typed array [4, 5] (second row, first and second column)
 ```
@@ -54,7 +56,7 @@ let jsArray = array.get([1, [0,2]]) // Returns typed array [4, 5] (second row, f
 ### Garbage collection
 To free up WebAssembly memory you need to call `free` method on instance of `NDArray`
 ```js
-let array = numas.NDArray([1], [1])
+let array = numas.NDArray.new([1], [1])
 array.free()
 // Memory is free, do NOT use array instance...
 ```
@@ -62,10 +64,10 @@ Because that might be hard to manage with builder patter, there is checkpoint sy
 Checkpoint system can free up arrays created in given checkpoint.
 ```js
 // By default checkpoint id is 0
-let array1 = numas.NDArray([1], [1])
+let array1 = numas.NDArray.new([1], [1])
 
 numas.cleaner.startCheckpoint()
-let array2 = numas.NDArray([1], [1])
+let array2 = numas.NDArray.new([1], [1])
 // Frees array2
 numas.cleaner.endCurrentCheckpoint()
 
@@ -73,8 +75,8 @@ numas.cleaner.endCurrentCheckpoint()
 
 let checkpointId = numas.cleaner.startCheckpoint()
 
-let array3 = numas.NDArray([1], [1])
-let array4 = numas.NDArray([2], [1])
+let array3 = numas.NDArray.new([1], [1])
+let array4 = numas.NDArray.new([2], [1])
 
 // end checkpoint, dont free memory
 numas.cleaner.endCurrentCheckpoint(false)
